@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>The Odin Project - Rock Paper Scissor</title>
+  </head>
+  <body>
+    <script>
+      let computerScore = 0
+      let humanScore = 0
+
+      function getComputerChoice() {
+        const computerChoice = ["rock", "paper", "scissor"]
+        const randomChoiceIdx = Math.floor(Math.random() * computerChoice.length)
+        return computerChoice[randomChoiceIdx]
+      }
+
+      function getHumanChoice() {
+        const userChoice = prompt("Choose one from 'rock'/'paper'/'scissor'")
+        let reformatUserChoice = userChoice.toLowerCase()
+        const validUserChoice = ["rock", "paper", "scissor"]
+        if (validUserChoice.includes(reformatUserChoice)) {
+          return reformatUserChoice
+        } else {
+          throw new ReferenceError(`${userChoice} is not a valid choice`)
+        }
+      }
+
+      function playRound(computerChoice, humanChoice) {
+        if (computerChoice === 'rock' && humanChoice === 'scissor') {
+          // Case 1: computerChoice === 'rock', humanChoice === 'scissor' --> computer wins
+          computerScore += 1
+          return "You lose! 'rock' beats 'scissor'"
+        } else if (computerChoice === 'rock' && humanChoice === 'paper') {
+          // Case 2: computerChoice === 'rock', humanChoice === 'paper' --> human wins
+          humanScore += 1
+          return "You win! 'paper' beats 'rock'"
+        } else if (computerChoice === 'scissor' && humanChoice === 'rock') {
+          // Case 3: computerChoice === 'scissor', humanChoice === 'rock' --> human wins
+          humanScore += 1
+          return "You win! 'rock' beats 'scissor'"
+        } else if (computerChoice === 'scissor' && humanChoice === 'paper') {
+          // Case 4: computerChoice === 'scissor', humanChoice === 'paper' --> computer wins
+          computerScore += 1
+          return "You lose! 'scissor' beats 'paper'"
+        } else if (computerChoice === 'paper' && humanChoice === 'rock') {
+          // Case 5: computerChoice === 'paper', humanChoice === 'rock' --> computer wins
+          computerScore += 1
+          return "You lose! 'paper' beats 'rock'"
+        } else if (computerChoice === 'paper' && humanChoice === 'scissor') {
+          // Case 6: computerChoice === 'paper', humanChoice === 'scissor' --> human wins
+          humanScore += 1
+          return "You win! 'scissor' beats 'paper'"
+        } else if (computerChoice === humanChoice) {
+          // Case 7: if computerChoice === humanChoice
+          return "Draw!"
+        }
+      }
+
+      console.log(playRound(getComputerChoice(), getHumanChoice()))
+    </script>
+  </body>
+</html>
