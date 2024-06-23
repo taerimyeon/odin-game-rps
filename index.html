@@ -6,9 +6,6 @@
   </head>
   <body>
     <script>
-      let computerScore = 0
-      let humanScore = 0
-
       function getComputerChoice() {
         const computerChoice = ["rock", "paper", "scissor"]
         const randomChoiceIdx = Math.floor(Math.random() * computerChoice.length)
@@ -26,38 +23,66 @@
         }
       }
 
-      function playRound(computerChoice, humanChoice) {
-        if (computerChoice === 'rock' && humanChoice === 'scissor') {
-          // Case 1: computerChoice === 'rock', humanChoice === 'scissor' --> computer wins
-          computerScore += 1
-          return "You lose! 'rock' beats 'scissor'"
-        } else if (computerChoice === 'rock' && humanChoice === 'paper') {
-          // Case 2: computerChoice === 'rock', humanChoice === 'paper' --> human wins
-          humanScore += 1
-          return "You win! 'paper' beats 'rock'"
-        } else if (computerChoice === 'scissor' && humanChoice === 'rock') {
-          // Case 3: computerChoice === 'scissor', humanChoice === 'rock' --> human wins
-          humanScore += 1
-          return "You win! 'rock' beats 'scissor'"
-        } else if (computerChoice === 'scissor' && humanChoice === 'paper') {
-          // Case 4: computerChoice === 'scissor', humanChoice === 'paper' --> computer wins
-          computerScore += 1
-          return "You lose! 'scissor' beats 'paper'"
-        } else if (computerChoice === 'paper' && humanChoice === 'rock') {
-          // Case 5: computerChoice === 'paper', humanChoice === 'rock' --> computer wins
-          computerScore += 1
-          return "You lose! 'paper' beats 'rock'"
-        } else if (computerChoice === 'paper' && humanChoice === 'scissor') {
-          // Case 6: computerChoice === 'paper', humanChoice === 'scissor' --> human wins
-          humanScore += 1
-          return "You win! 'scissor' beats 'paper'"
-        } else if (computerChoice === humanChoice) {
-          // Case 7: if computerChoice === humanChoice
-          return "Draw!"
+      function playGame() {
+        let computerScore = 0
+        let humanScore = 0
+        let result
+        let scores
+
+        function playRound(computerChoice, humanChoice) {
+          if (computerChoice === 'rock' && humanChoice === 'scissor') {
+            // Case 1: computerChoice === 'rock', humanChoice === 'scissor' --> computer wins
+            computerScore += 1
+            return "You lose! 'rock' beats 'scissor'"
+          } else if (computerChoice === 'rock' && humanChoice === 'paper') {
+            // Case 2: computerChoice === 'rock', humanChoice === 'paper' --> human wins
+            humanScore += 1
+            return "You win! 'paper' beats 'rock'"
+          } else if (computerChoice === 'scissor' && humanChoice === 'rock') {
+            // Case 3: computerChoice === 'scissor', humanChoice === 'rock' --> human wins
+            humanScore += 1
+            return "You win! 'rock' beats 'scissor'"
+          } else if (computerChoice === 'scissor' && humanChoice === 'paper') {
+            // Case 4: computerChoice === 'scissor', humanChoice === 'paper' --> computer wins
+            computerScore += 1
+            return "You lose! 'scissor' beats 'paper'"
+          } else if (computerChoice === 'paper' && humanChoice === 'rock') {
+            // Case 5: computerChoice === 'paper', humanChoice === 'rock' --> computer wins
+            computerScore += 1
+            return "You lose! 'paper' beats 'rock'"
+          } else if (computerChoice === 'paper' && humanChoice === 'scissor') {
+            // Case 6: computerChoice === 'paper', humanChoice === 'scissor' --> human wins
+            humanScore += 1
+            return "You win! 'scissor' beats 'paper'"
+          } else {
+            // Case 7: if computerChoice === humanChoice
+            return "Draw!"
+          }
         }
+
+        result = playRound(getComputerChoice(), getHumanChoice())
+        console.log(`Round 1: ${result}\tComputer: ${computerScore}\tHuman: ${humanScore}`)
+        result = playRound(getComputerChoice(), getHumanChoice())
+        console.log(`Round 2: ${result}\tComputer: ${computerScore}\tHuman: ${humanScore}`)
+        result = playRound(getComputerChoice(), getHumanChoice())
+        console.log(`Round 3: ${result}\tComputer: ${computerScore}\tHuman: ${humanScore}`)
+        result = playRound(getComputerChoice(), getHumanChoice())
+        console.log(`Round 4: ${result}\tComputer: ${computerScore}\tHuman: ${humanScore}`)
+        result = playRound(getComputerChoice(), getHumanChoice())
+        console.log(`Round 5: ${result}\tComputer: ${computerScore}\tHuman: ${humanScore}`)
+
+        scores = [computerScore, humanScore]
+
+        return scores
       }
 
-      console.log(playRound(getComputerChoice(), getHumanChoice()))
+      let scores
+      scores = playGame()
+      if (scores[0] > scores[1]) {
+        console.log("COMPUTER WINS!")
+      } else {
+        console.log("HUMAN WINS!")
+      }
     </script>
   </body>
 </html>
