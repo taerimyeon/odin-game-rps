@@ -3,86 +3,35 @@
   <head>
     <meta charset="utf-8">
     <title>The Odin Project - Rock Paper Scissor</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
   </head>
   <body>
-    <script>
-      function getComputerChoice() {
-        const computerChoice = ["rock", "paper", "scissor"]
-        const randomChoiceIdx = Math.floor(Math.random() * computerChoice.length)
-        return computerChoice[randomChoiceIdx]
-      }
-
-      function getHumanChoice() {
-        const userChoice = prompt("Choose one from 'rock'/'paper'/'scissor'")
-        let reformatUserChoice = userChoice.toLowerCase()
-        const validUserChoice = ["rock", "paper", "scissor"]
-        if (validUserChoice.includes(reformatUserChoice)) {
-          return reformatUserChoice
-        } else {
-          throw new ReferenceError(`${userChoice} is not a valid choice`)
-        }
-      }
-
-      function playGame() {
-        let computerScore = 0
-        let humanScore = 0
-        let result
-        let scores
-
-        function playRound(computerChoice, humanChoice) {
-          if (computerChoice === 'rock' && humanChoice === 'scissor') {
-            // Case 1: computerChoice === 'rock', humanChoice === 'scissor' --> computer wins
-            computerScore += 1
-            return "You lose! 'rock' beats 'scissor'"
-          } else if (computerChoice === 'rock' && humanChoice === 'paper') {
-            // Case 2: computerChoice === 'rock', humanChoice === 'paper' --> human wins
-            humanScore += 1
-            return "You win! 'paper' beats 'rock'"
-          } else if (computerChoice === 'scissor' && humanChoice === 'rock') {
-            // Case 3: computerChoice === 'scissor', humanChoice === 'rock' --> human wins
-            humanScore += 1
-            return "You win! 'rock' beats 'scissor'"
-          } else if (computerChoice === 'scissor' && humanChoice === 'paper') {
-            // Case 4: computerChoice === 'scissor', humanChoice === 'paper' --> computer wins
-            computerScore += 1
-            return "You lose! 'scissor' beats 'paper'"
-          } else if (computerChoice === 'paper' && humanChoice === 'rock') {
-            // Case 5: computerChoice === 'paper', humanChoice === 'rock' --> computer wins
-            computerScore += 1
-            return "You lose! 'paper' beats 'rock'"
-          } else if (computerChoice === 'paper' && humanChoice === 'scissor') {
-            // Case 6: computerChoice === 'paper', humanChoice === 'scissor' --> human wins
-            humanScore += 1
-            return "You win! 'scissor' beats 'paper'"
-          } else {
-            // Case 7: if computerChoice === humanChoice
-            return "Draw!"
-          }
-        }
-
-        result = playRound(getComputerChoice(), getHumanChoice())
-        console.log(`Round 1: ${result}\tComputer: ${computerScore}\tHuman: ${humanScore}`)
-        result = playRound(getComputerChoice(), getHumanChoice())
-        console.log(`Round 2: ${result}\tComputer: ${computerScore}\tHuman: ${humanScore}`)
-        result = playRound(getComputerChoice(), getHumanChoice())
-        console.log(`Round 3: ${result}\tComputer: ${computerScore}\tHuman: ${humanScore}`)
-        result = playRound(getComputerChoice(), getHumanChoice())
-        console.log(`Round 4: ${result}\tComputer: ${computerScore}\tHuman: ${humanScore}`)
-        result = playRound(getComputerChoice(), getHumanChoice())
-        console.log(`Round 5: ${result}\tComputer: ${computerScore}\tHuman: ${humanScore}`)
-
-        scores = [computerScore, humanScore]
-
-        return scores
-      }
-
-      let scores
-      scores = playGame()
-      if (scores[0] > scores[1]) {
-        console.log("COMPUTER WINS!")
-      } else {
-        console.log("HUMAN WINS!")
-      }
-    </script>
+    <div class="container">
+      <div class="info-container">
+        <div id="title">
+          Computer vs Human
+        </div>
+        <div>
+          <span id="computer-score">0</span>
+          <span style="font-size: 2em;">vs</span>
+          <span id="human-score">0</span>
+        </div>
+        <div>
+          <span id="computer-choice">&nbsp;</span>
+          <span>&nbsp;</span>
+          <span id="human-choice">&nbsp;</span>
+        </div>
+        <div>
+          <span id="game-result">&nbsp;</span>
+        </div>
+      </div>
+      <div class="button-container">
+        <button id="btn-rock" title="Click to choose rock">🪨</button>
+        <button id="btn-paper" title="Click to choose paper">🗞️</button>
+        <button id="btn-scissor" title="Click to choose scissor">✂️</button>
+        <button id="btn-reset" class="hidden" title="Click to reset the game">🔄</button>
+      </div>
+    </div>
   </body>
 </html>

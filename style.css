@@ -1,0 +1,62 @@
+body {
+	background-color: #7071715f;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button {
+	cursor: pointer;
+	width: 150px;
+	height: 150px;
+	background-color: white;
+	border: 2px solid gray;
+	border-radius: 6px;
+	font-size: 4em;
+}
+
+.container {
+	display: flex;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.info-container {
+	display: block;
+	padding: 20px;
+	border-radius: 6px;
+	background-color: white;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.button-container {
+	display: block;
+	padding: 20px;
+	border-radius: 6px;
+	background-color: white;
+}
+
+.button-clicked {
+	background-color: darkgrey;
+}
+
+#title {
+	font-size: 2.5em;
+}
+
+#computer-choice,
+#computer-score,
+#human-choice,
+#human-score {
+	font-weight: 900;
+	font-size: 2em;
+}
+
+#game-result {
+	font-size: 2em;
+}
+
+.hidden {
+	display: none;
+}
